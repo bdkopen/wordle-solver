@@ -49,16 +49,21 @@ def get_google_search_avg(
 
 # get the historical average for a word
 # (looks at data from 2019 to 2021 for a day from each month from 0 hours up to the specified hour)
-def get_historical_avg(word, hour=current_hour):
+def get_historical_avg(word, year=current_year, hour=current_hour):
 	average = 0
-	for year in range(2019, 2022):
+
+	year_count = 3
+	min_year = int(year) - year_count
+	max_year = int(year)
+
+	for year in range(min_year, max_year):
 		for month in range(1, 12):
 			month_formatted = str(month).zfill(2)
 			day_avg = get_google_search_avg(word, year=year, month=month_formatted, day='01', year2=year, month2=month_formatted, day2='01', hour2=hour)
 			print(day_avg)
 			average = average + day_avg
 
-	return average / (3 * 12)
+	return average / (year_count * 12)
 
 # change these here
 WORD = 'being'
