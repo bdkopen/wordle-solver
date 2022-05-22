@@ -1,3 +1,5 @@
+import csv
+
 # Fetch all possible Wordle words from the text file and return them.
 def getPossibleWords():
 
@@ -12,3 +14,20 @@ def getPossibleWords():
 
     return words
     file.close()
+
+# Export Historical Data to CSV File
+def exportCSV():
+    
+    # field names
+    fields = []
+
+    # data rows
+    rows = []
+
+    with open('GFG', 'w') as f:
+      
+        # using csv.writer method from CSV package
+        write = csv.writer(f)
+        
+        write.writerow(fields)
+        write.writerows(rows)
