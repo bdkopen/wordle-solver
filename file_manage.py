@@ -10,7 +10,7 @@ def getPossibleWords():
     words = []
 
     # Strip off any whitespace or line breaks
-    for x in words_raw:
-        words.append(x.strip())
+    for word in words_raw:
+        words.append(word.strip())
 
     return words
